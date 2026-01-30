@@ -1,0 +1,230 @@
+/* ===== SALAS Y FORMATOS ===== */
+.tipos-salas {
+    margin-bottom: 3rem;
+}
+
+.sala-card {
+    background-color: var(--background-card);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.sala-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.sala-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.sala-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.sala-card:hover .sala-image img {
+    transform: scale(1.05);
+}
+
+.sala-content {
+    padding: 1.5rem;
+}
+
+.sala-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.sala-features {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sala-features .badge {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    font-weight: 500;
+}
+
+.sala-features i {
+    margin-right: 0.3rem;
+    color: var(--accent-color);
+}
+
+.sala-description {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.sala-price .price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+/* Tabla de tecnologías */
+.table-dark {
+    background-color: var(--background-card);
+    border-color: var(--border-color);
+}
+
+.table-dark th {
+    background-color: var(--accent-dark);
+    color: var(--text-light);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.table-dark td {
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(12, 192, 223, 0.1);
+}
+
+/* Instalaciones */
+.instalacion-card {
+    background-color: var(--background-card);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.instalacion-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.instalacion-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.instalacion-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.instalacion-card:hover .instalacion-image img {
+    transform: scale(1.05);
+}
+
+.instalacion-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--gradient-primary);
+    color: var(--text-light);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(12, 192, 223, 0.3);
+    z-index: 2;
+}
+
+.instalacion-content {
+    padding: 1.5rem;
+}
+
+.instalacion-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.instalacion-address {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.instalacion-features {
+    margin-bottom: 1.5rem;
+}
+
+.instalacion-features p {
+    margin-bottom: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.instalacion-features i {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+}
+
+/* FAQ */
+.accordion {
+    --bs-accordion-bg: var(--background-card);
+    --bs-accordion-border-color: var(--border-color);
+    --bs-accordion-btn-color: var(--text-light);
+    --bs-accordion-btn-bg: var(--background-card);
+    --bs-accordion-active-color: var(--accent-color);
+    --bs-accordion-active-bg: var(--background-dark);
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(12, 192, 223, 0.25);
+}
+
+.accordion-button {
+    font-weight: 600;
+    padding: 1.25rem 1.5rem;
+}
+
+.accordion-button:not(.collapsed) {
+    box-shadow: inset 0 -1px 0 var(--border-color);
+}
+
+.accordion-body {
+    padding: 1.5rem;
+    color: var(--text-muted);
+    background-color: var(--background-dark);
+}
+
+/* Responsive para salas */
+@media (max-width: 768px) {
+    .sala-image img, .instalacion-image img {
+        height: 150px;
+    }
+    
+    .sala-title, .instalacion-title {
+        font-size: 1.1rem;
+    }
+    
+    .table-responsive {
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .sala-card, .instalacion-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .accordion-button {
+        font-size: 0.9rem;
+        padding: 1rem;
+    }
+    
+    .accordion-body {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+}

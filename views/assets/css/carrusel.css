@@ -1,0 +1,10 @@
+.hero-section .carousel-item img {
+  height: 500px;
+  object-fit: cover;
+}
+
+.hero-section .carousel-caption {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 10px;
+}

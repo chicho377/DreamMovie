@@ -1,0 +1,133 @@
+/* ===== CARTELERA DETALLADA ===== */
+.cartelera-completa {
+    margin-bottom: 3rem;
+}
+
+.movie-detailed {
+    background-color: var(--background-card);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.movie-detailed:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.movie-poster-detailed {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.movie-poster-detailed img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.movie-detailed:hover .movie-poster-detailed img {
+    transform: scale(1.03);
+}
+
+.movie-overlay-detailed {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.movie-info-detailed {
+    padding: 0 1.5rem;
+}
+
+.movie-title-detailed {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.movie-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.movie-synopsis {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.movie-showtimes {
+    background-color: var(--background-dark);
+    border-radius: 8px;
+    padding: 1.5rem;
+    height: 100%;
+}
+
+.showtimes-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.showtimes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.showtime-format h6 {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.times {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filters-section {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.form-control, .form-select {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.25rem rgba(12, 192, 223, 0.25);
+}
+
+/* Responsive para cartelera detallada */
+@media (max-width: 992px) {
+    .movie-info-detailed {
+        padding: 1.5rem 0;
+    }
+    
+    .movie-showtimes {
+        margin-top: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .movie-title-detailed {
+        font-size: 1.5rem;
+    }
+    
+    .movie-meta span {
+        margin-bottom: 0.5rem;
+    }
+}

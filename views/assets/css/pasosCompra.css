@@ -1,0 +1,323 @@
+/* Barra de pasos con línea progresiva */
+    .compra-pasos {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 32px 0 24px 0;
+        position: relative;
+        padding: 0 16px;
+    }
+    .compra-pasos .paso {
+        flex: 1;
+        text-align: center;
+        position: relative;
+        cursor: pointer;
+        color: #b3b3b3;
+        font-weight: 500;
+        z-index: 2;
+    }
+    .compra-pasos .paso.active {
+        color: #00eaff;
+        font-weight: bold;
+    }
+    .compra-pasos .paso .paso-numero {
+        display: inline-block;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        border-radius: 50%;
+        background: #222;
+        color: #fff;
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+        border: 2px solid #444;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        transition: border 0.2s, background 0.2s;
+    }
+    .compra-pasos .paso.active .paso-numero {
+        background: #00eaff;
+        color: #181818;
+        border: 2px solid #00eaff;
+    }
+    /* Línea progresiva */
+    .compra-pasos .linea-pasos {
+        position: absolute;
+        top: 18px;
+        left: 8%;
+        width: 84%;
+        height: 4px;
+        background: #444;
+        z-index: 1;
+        border-radius: 2px;
+        overflow: hidden;
+    }
+    .compra-pasos .linea-pasos .linea-activa {
+        height: 100%;
+        background: #00eaff;
+        border-radius: 2px;
+        transition: width 0.4s;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    @media (max-width: 900px) {
+        .compra-pasos {
+            flex-direction: column;
+            gap: 8px;
+        }
+        .compra-pasos .linea-pasos {
+            display: none;
+        }
+    }
+    /* --- Butacas --- */
+    .fila-asientos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+        gap: 18px;
+    }
+    .letra-fila {
+        color: #00eaff;
+        font-weight: bold;
+        margin-right: 18px;
+        font-size: 1.1rem;
+    }
+    .asiento {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        background: #222;
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 10px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        border: 2px solid #444;
+        transition: background 0.2s, border 0.2s, color 0.2s;
+    }
+    .asiento.discapacitado {
+        background: #7c4dff !important;
+        color: #fff !important;
+        border-color: #7c4dff !important;
+    }
+    .asiento.seleccionado {
+        background: #00eaff !important;
+        color: #181818 !important;
+        border-color: #00eaff !important;
+    }
+    .asiento.seleccionado.discapacitado {
+        background: #00eaff !important;
+        color: #181818 !important;
+        border-color: #00eaff !important;
+    }
+    @media (max-width: 900px) {
+        .fila-asientos {
+            gap: 8px;
+        }
+        .asiento {
+            width: 28px;
+            height: 28px;
+            font-size: 0.9rem;
+            margin: 0 3px;
+        }
+        .letra-fila {
+            margin-right: 8px;
+            font-size: 1rem;
+        }
+        .asiento.discapacitado i {
+            font-size: 1.1rem;
+        }
+    }
+    /* --- Fin Butacas --- */
+    /* --- Otras Estilos --- */
+    .pantalla {
+        background: #444;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 12px;
+        border-radius: 4px;
+    }
+    .asientos-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 10px;
+    }
+    .asiento.ocupado {
+        background: #666;
+        color: #333;
+        cursor: not-allowed;
+    }
+    .leyenda-asientos {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 0.9rem;
+        margin-top: 8px;
+    }
+    .leyenda-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    /* --- Fin Otras Estilos --- */
+    /* Resumen compacto */
+    .resumen-compra-card {
+        background: #181818;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+        padding: 18px 28px 12px 28px;
+        max-width: 600px;
+        margin: 0 auto 18px auto;
+    }
+    .resumen-header {
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid #222;
+        margin-bottom: 10px;
+        padding-bottom: 6px;
+    }
+    .resumen-header h4 {
+        font-size: 1.5rem;
+        color: #fff;
+        margin: 0 0 0 8px;
+        font-weight: bold;
+    }
+    .resumen-header i {
+        color: #00eaff;
+        font-size: 1.6rem;
+    }
+    .resumen-body {
+        font-size: 1.05rem;
+        color: #fff;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px 18px;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+    .resumen-item {
+        display: contents;
+    }
+    .resumen-body span:first-child {
+        color: #b3b3b3;
+        font-weight: 500;
+        text-align: left;
+    }
+    .resumen-body span:last-child {
+        text-align: right;
+        font-weight: 600;
+    }
+    .resumen-total {
+        grid-column: 1 / span 2;
+        text-align: right;
+        font-size: 1.25rem;
+        color: #00eaff;
+        font-weight: bold;
+        margin-top: 8px;
+    }
+    @media (max-width: 700px) {
+        .resumen-compra-card {
+            padding: 10px 6px 8px 6px;
+            max-width: 98vw;
+        }
+        .resumen-header h4 {
+            font-size: 1.1rem;
+        }
+        .resumen-body {
+            font-size: 0.95rem;
+            gap: 4px 8px;
+        }
+        .resumen-total {
+            font-size: 1.05rem;
+        }
+    }
+    /* Paso 6: Resumen y pago con layout en dos columnas */
+    .pago-resumen-layout {
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+        align-items: flex-start;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 18px;
+    }
+    .pago-formulario {
+        flex: 2;
+        min-width: 320px;
+    }
+    .resumen-aside {
+        flex: 1;
+        max-width: 320px;
+        background: #181818;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+        padding: 18px 22px 12px 22px;
+        margin-top: 0;
+        position: sticky;
+        top: 24px;
+        height: fit-content;
+    }
+    .resumen-header {
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid #222;
+        margin-bottom: 10px;
+        padding-bottom: 6px;
+    }
+    .resumen-header h4 {
+        font-size: 1.2rem;
+        color: #fff;
+        margin: 0 0 0 8px;
+        font-weight: bold;
+    }
+    .resumen-header i {
+        color: #00eaff;
+        font-size: 1.4rem;
+    }
+    .resumen-body {
+        font-size: 1rem;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 8px;
+    }
+    .resumen-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2px 0;
+    }
+    .resumen-item span:first-child {
+        color: #b3b3b3;
+        font-weight: 500;
+        text-align: left;
+    }
+    .resumen-item span:last-child {
+        text-align: right;
+        font-weight: 600;
+    }
+    .resumen-total {
+        text-align: right;
+        font-size: 1.15rem;
+        color: #00eaff;
+        font-weight: bold;
+        margin-top: 8px;
+    }
+    @media (max-width: 900px) {
+        .pago-resumen-layout {
+            flex-direction: column;
+            gap: 12px;
+        }
+        .resumen-aside {
+            max-width: 98vw;
+            margin: 0 auto;
+            position: static;
+        }
+    }

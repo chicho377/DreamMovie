@@ -1,0 +1,501 @@
+/* ===== PROCESO DE COMPRA ===== */
+.compra-pasos {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.compra-pasos::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--border-color);
+    z-index: 1;
+}
+
+.paso {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    color: var(--text-muted);
+}
+
+.paso.active {
+    color: var(--accent-color);
+}
+
+.paso-numero {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--background-card);
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.paso.active .paso-numero {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    border-color: var(--accent-color);
+}
+
+.paso-texto {
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.compra-card {
+    background-color: var(--background-card);
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+}
+
+.compra-card .card-header {
+    background-color: var(--background-dark);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem;
+}
+
+.compra-card .card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+}
+
+.compra-card .card-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+}
+
+.compra-card .card-body {
+    padding: 1.5rem;
+}
+
+.compra-card .card-footer {
+    background-color: var(--background-dark);
+    border-top: 1px solid var(--border-color);
+    padding: 1.5rem;
+}
+
+/* Selección de película */
+.pelicula-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pelicula-card:hover {
+    transform: translateY(-5px);
+}
+
+.pelicula-imagen {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.pelicula-imagen img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.pelicula-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.pelicula-info h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+}
+
+/* Selección de sala */
+.list-group-item {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    border-color: var(--border-color);
+    margin-bottom: 0.5rem;
+    border-radius: 5px !important;
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: rgba(12, 192, 223, 0.1);
+    border-color: var(--accent-color);
+}
+
+.form-check-input {
+    background-color: var(--background-dark);
+    border-color: var(--border-color);
+}
+
+.form-check-input:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.horarios-disponibles {
+    background-color: var(--background-dark);
+    border-radius: 5px;
+    padding: 1rem;
+    min-height: 150px;
+}
+
+.horario-btn {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.horario-btn:hover, .horario-btn.active {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    border-color: var(--accent-color);
+}
+
+/* Selección de asientos */
+.sala-container {
+    background-color: var(--background-dark);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+
+.pantalla {
+    background: linear-gradient(to bottom, #666, #333);
+    color: white;
+    text-align: center;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.asientos-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.fila-asientos {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.letra-fila {
+    width: 20px;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.asiento {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.asiento.disponible {
+    background-color: #2e2e2e;
+    color: var(--text-light);
+    border: 1px solid #444;
+}
+
+.asiento.disponible:hover {
+    background-color: #3e3e3e;
+}
+
+.asiento.seleccionado {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    border: 1px solid var(--accent-color);
+}
+
+.asiento.ocupado {
+    background-color: #1a1a1a;
+    color: #666;
+    border: 1px solid #333;
+    cursor: not-allowed;
+}
+
+.asiento.vip {
+    background-color: #5e2a84;
+    color: var(--text-light);
+    border: 1px solid #7d3fb1;
+}
+
+.fila-vip .asiento.disponible {
+    background-color: #5e2a84;
+    border: 1px solid #7d3fb1;
+}
+
+.fila-vip .letra-fila {
+    color: #b57aff;
+}
+
+.leyenda-asientos {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.leyenda-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.leyenda-item span.asiento {
+    cursor: default;
+}
+
+/* Resumen de compra */
+.resumen-compra-card {
+    background-color: var(--background-card);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    top: 20px;
+}
+
+.resumen-header {
+    background-color: var(--background-dark);
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.resumen-header h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-light);
+}
+
+.resumen-header i {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+}
+
+.resumen-body {
+    padding: 1.5rem;
+}
+
+.resumen-pelicula {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.resumen-info h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--text-light);
+}
+
+.resumen-detalles {
+    margin-top: 1rem;
+}
+
+.resumen-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.resumen-item.total {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    margin-top: 0.5rem;
+}
+
+.aplicar-promocion {
+    margin-top: 1.5rem;
+}
+
+.aplicar-promocion label {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Información importante */
+.info-card {
+    background-color: var(--background-card);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.info-card h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+
+.info-card h5 i {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+}
+
+.info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-card ul li {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.info-card ul li::before {
+    content: '•';
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+}
+
+/* Confirmación de compra */
+.compra-exitosa {
+    padding: 1rem;
+}
+
+.compra-exitosa i {
+    font-size: 4rem;
+    color: var(--accent-color);
+}
+
+.compra-exitosa h4 {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.compra-exitosa p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.resumen-compra {
+    background-color: var(--background-dark);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.resumen-compra .resumen-item {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.resumen-compra .resumen-item span:first-child {
+    color: var(--text-muted);
+}
+
+.codigo-qr {
+    margin: 0 auto;
+    max-width: 200px;
+}
+
+.codigo-qr p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Responsive para compras */
+@media (max-width: 992px) {
+    .resumen-compra-card {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .compra-pasos {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .paso {
+        width: calc(50% - 0.5rem);
+    }
+    
+    .paso-texto {
+        font-size: 0.8rem;
+    }
+    
+    .sala-container {
+        padding: 1rem;
+    }
+    
+    .asiento {
+        width: 25px;
+        height: 25px;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .paso {
+        width: 100%;
+    }
+    
+    .compra-card .card-header {
+        padding: 1rem;
+    }
+    
+    .compra-card .card-body {
+        padding: 1rem;
+    }
+    
+    .compra-card .card-footer {
+        padding: 1rem;
+    }
+    
+    .resumen-header, .resumen-body {
+        padding: 1rem;
+    }
+}
