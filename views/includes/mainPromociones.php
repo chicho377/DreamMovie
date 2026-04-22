@@ -17,10 +17,10 @@
                                 <img src="./assets/img/2x1.png" alt="Viernes de 2x1" class="img-fluid">
                             </div>
                             <div class="promo-content">
-                                <h4 class="promo-title">Viernes de 2x1</h4>
-                                <p class="promo-description">Todos los viernes disfruta de 2 entradas por el precio de 1 en todas las películas y formatos.</p>
+                                <h4 class="promo-title">Jueves de 2x1</h4>
+                                <p class="promo-description">Todos los jueves disfruta de 2 entradas por el precio de 1 en todas las películas y formatos.</p>
                                 <div class="promo-details">
-                                    <span class="promo-valid"><i class="bi bi-calendar"></i> Válido hasta: 31/12/2025</span>
+                                    <span class="promo-valid"><i class="bi bi-calendar"></i> Válido hasta: 31/12/2026</span>
                                     <span class="promo-code"><i class="bi bi-tag"></i> Código: DREAM2X1</span>
                                 </div>
                                 <button class="btn btn-gradient w-100 mt-3" onclick="copyPromotion('DREAM2X1')">

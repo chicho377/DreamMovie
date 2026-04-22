@@ -1,0 +1,36 @@
+@startuml
+!define C4P https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master
+!include C4P/C4_Component.puml
+
+LAYOUT_TOP_DOWN()
+skinparam dpi 220
+skinparam defaultFontSize 20
+skinparam wrapWidth 220
+
+title C4 Nivel 3 - Componentes del Sistema DM (Venta de Cine)
+
+Container_Boundary(compra, "Módulo Compra") {
+  Component(ui, "UI Wizard", "HTML/JS", "6 pasos de compra")
+  Component(loader, "Cargador dinámico", "AJAX", "Trae películas/salas/horarios/asientos")
+  Component(total, "Cálculo total", "JS/PHP", "Subtotal + servicio + descuentos")
+  Component(valid, "Validador", "PHP", "Reglas de entradas, butacas y datos")
+  Component(repo, "Registro entradas", "PHP + SQL", "Inserta entradas por asiento")
+  Component(qr, "Servicio QR", "php-qrcode", "Genera QR del ticket")
+  Component(mail, "Servicio correo", "PHPMailer", "Envía ticket digital")
+}
+
+ContainerDb(db, "BD", "MySQL")
+System_Ext(smtp, "SMTP", "Correo")
+
+Rel(ui, loader, "Pide opciones", "AJAX")
+Rel(ui, total, "Actualiza resumen")
+Rel(ui, valid, "Envía POST final")
+Rel(loader, db, "Consulta")
+Rel(valid, repo, "Si OK")
+Rel(repo, db, "INSERT")
+Rel(repo, qr, "Solicita QR")
+Rel(qr, mail, "Adjunta QR")
+Rel(mail, smtp, "SMTP")
+
+SHOW_LEGEND()
+@enduml
