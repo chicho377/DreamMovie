@@ -100,6 +100,18 @@ http://localhost:8000/index.php
 
 ---
 
+## 📱 Experiencia responsiva + acceso móvil rápido
+
+Dream Movie está diseñado con un enfoque **responsive**, por lo que la interfaz se adapta a computadoras, tablets y celulares para mantener una navegación clara y un flujo de compra cómodo en cualquier tamaño de pantalla.
+
+Si quieres abrir el proyecto rápidamente desde tu teléfono durante pruebas locales o demos, escanea este QR:
+
+<p align="center">
+  <img src="views/assets/img/qr-dreammovie.png" alt="QR para abrir Dream Movie desde un dispositivo móvil" width="260">
+</p>
+
+---
+
 ## 🧭 Módulos principales
 
 - **`index.php`**: landing principal con cartelera semanal y próximos estrenos.
