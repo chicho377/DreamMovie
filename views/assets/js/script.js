@@ -159,6 +159,7 @@ function actualizarLineaPasos(num) {
             }
             html += '<div class="resumen-total">Total: ₡'+total+'</div>';
             $('#resumen-body').html(html);
+            $('#totalFinal').val(total);
         }
 
         $('#aplicarCodigo').click(function(){
@@ -169,8 +170,8 @@ function actualizarLineaPasos(num) {
             var diaSemana = hoy.getDay(); // 0=Domingo, 1=Lunes, ..., 6=Sábado
             descuentoPromo = 0;
             promoAplicado = '';
-            if(codigo === 'DREAM2X1' && diaSemana === 3){
-                // Aplica 2x1 solo viernes, solo para adultos
+            if(codigo === 'DREAM2X1' && diaSemana === 4){
+                // Aplica 2x1 solo jueves, solo para adultos
                 var adulto = parseInt($('#adulto').val());
                 if(adulto >= 2){
                     descuentoPromo = 3500;
@@ -180,7 +181,7 @@ function actualizarLineaPasos(num) {
                     Swal.fire({text: 'El código DREAM2X1 requiere al menos 2 entradas de adulto.', icon: 'warning', confirmButtonColor: '#00eaff'});
                 }
             }else if(codigo === 'DREAM2X1'){
-                Swal.fire({text: 'El código DREAM2X1 solo es válido los viernes.', icon: 'error', confirmButtonColor: '#00eaff'});
+                Swal.fire({text: 'El código DREAM2X1 solo es válido los jueves.', icon: 'error', confirmButtonColor: '#00eaff'});
             }else if(codigo.length > 0){
                 Swal.fire({text: 'Código promocional no válido.', icon: 'error', confirmButtonColor: '#00eaff'});
             }

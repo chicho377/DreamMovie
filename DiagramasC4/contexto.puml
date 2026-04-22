@@ -1,0 +1,32 @@
+@startuml
+!define C4P https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master
+!include C4P/C4_Context.puml
+
+LAYOUT_WITH_LEGEND()
+
+title C4 Nivel 1 - Contexto del Sistema DM (Venta de Cine)
+
+' Personas
+Person(usuario, "Usuario", "Consulta cartelera, promociones, salas y compra entradas en línea")
+Person(taquilla, "Personal de Taquilla", "Valida tickets digitales con QR en el cine")
+Person(marketing, "Equipo de Marketing", "Publica promociones y códigos")
+
+' Sistema principal
+System(vc, "Sistema Web", "Portal web para gestión y compra de entradas de cine")
+
+' Sistemas externos
+System_Ext(mail, "Servicio SMTP", "Envío de ticket digital por correo")
+System_Ext(qr, "Generador QR (Librería)", "Generación de códigos QR para validación")
+System_Ext(pasarela, "Pasarela de Pago (Futuro)", "Procesamiento seguro de pagos con tarjeta")
+
+' Relaciones
+Rel(usuario, vc, "Navega cartelera y realiza compra", "HTTPS")
+Rel(marketing, vc, "Gestiona promociones/códigos", "Backoffice/DB")
+Rel(taquilla, vc, "Escanea/valida ticket", "QR + consulta")
+
+Rel(vc, mail, "Envía confirmación y ticket digital", "SMTP")
+Rel(vc, qr, "Genera QR de entrada", "API/Librería")
+Rel(vc, pasarela, "Autoriza cobro", "HTTPS/REST")
+
+SHOW_LEGEND()
+@enduml

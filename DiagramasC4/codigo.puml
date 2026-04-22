@@ -1,0 +1,41 @@
+@startuml
+!define C4P https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master
+!include C4P/C4_Component.puml
+
+LAYOUT_LEFT_RIGHT()
+skinparam dpi 240
+skinparam defaultFontSize 20
+skinparam wrapWidth 200
+
+title C4 Nivel 4 - Código del Sistema DM (Venta de Cine)
+
+Container_Boundary(js, "Frontend") {
+  Component(jsWizard, "script.js", "JS", "Navega pasos")
+  Component(jsAjax, "ajax calls", "jQuery", "Llama endpoints")
+  Component(jsTotal, "total", "JS", "Calcula resumen")
+}
+
+Container_Boundary(php, "Backend (comprar.php)") {
+  Component(ctrl, "POST controller", "PHP", "Orquesta compra")
+  Component(val, "validate()", "PHP", "Reglas de negocio")
+  Component(funcQ, "findFuncion()", "SQL", "Busca función")
+  Component(saveE, "saveEntradas()", "SQL", "Inserta entradas")
+  Component(send, "enviarCorreoConQR()", "PHP", "QR + email")
+}
+
+ContainerDb(db, "MySQL", "Funciones/Entradas")
+System_Ext(smtp, "SMTP", "Correo externo")
+
+Rel(jsWizard, jsAjax, "Carga datos")
+Rel(jsWizard, jsTotal, "Resumen")
+Rel(jsWizard, ctrl, "POST compra")
+Rel(ctrl, val, "Valida")
+Rel(ctrl, funcQ, "Busca función")
+Rel(funcQ, db, "SELECT")
+Rel(ctrl, saveE, "Guarda")
+Rel(saveE, db, "INSERT")
+Rel(ctrl, send, "Genera ticket")
+Rel(send, smtp, "Envía correo")
+
+SHOW_LEGEND()
+@enduml

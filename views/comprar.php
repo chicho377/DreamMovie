@@ -308,7 +308,7 @@ $current_page = "comprar";
                 
                 if ($insert_success) {
                     // Llamar a la función nueva de correo con QR embebido
-                    enviarCorreoConQR($nombre, $correo, $tarjeta, $cine_nombre, $dia, $pelicula_titulo, $sala_id, $hora, $adulto, $nino, $mayor, implode(', ', $asientos), $total);
+                    enviarCorreoConQR($nombre, $correo, $tarjeta, $cine_nombre, $dia, $pelicula_titulo, $sala_id, $hora, $adulto, $nino, $mayor, implode(', ', $asientos), $total, $codigo_promocional);
                     echo '<script>
                         // Mostrar loading durante el proceso
                         Swal.fire({
@@ -357,7 +357,7 @@ $current_page = "comprar";
     }
     
     // FUNCIÓN CORREGIDA PARA ENVIAR CORREO CON QR EMBEBIDO
-function enviarCorreoConQR($nombre, $correo, $tarjeta, $cine, $dia, $pelicula, $sala, $hora, $adulto, $nino, $mayor, $butacas, $total) {
+function enviarCorreoConQR($nombre, $correo, $tarjeta, $cine, $dia, $pelicula, $sala, $hora, $adulto, $nino, $mayor, $butacas, $total, $codigo_promocional = '') {
     // Generar número de ticket único
     $ticketNumber = 'DM-' . date('YmdHis') . '-' . rand(100, 999);
 
@@ -391,7 +391,7 @@ function enviarCorreoConQR($nombre, $correo, $tarjeta, $cine, $dia, $pelicula, $
         $mail->Port = 587;
         $mail->CharSet = 'UTF-8';
 
-        $mail->setFrom('mismo mail de arriba', 'Dream Movie');
+        $mail->setFrom('', 'Dream Movie');
         $mail->addAddress($correo, $nombre);
         $mail->Subject = '🎬 Tu entrada para ' . $pelicula . ' - Dream Movie';
         
@@ -408,13 +408,19 @@ function enviarCorreoConQR($nombre, $correo, $tarjeta, $cine, $dia, $pelicula, $
         if ($adulto > 0) $detalleEntradas[] = $adulto . ' x Entrada de Adulto ₡' . number_format($adulto * 3500, 0);
         if ($nino > 0) $detalleEntradas[] = $nino . ' x Entrada de Niño ₡' . number_format($nino * 2000, 0);
         if ($mayor > 0) $detalleEntradas[] = $mayor . ' x Entrada de Adulto Mayor ₡' . number_format($mayor * 2500, 0);
+        if (!empty($codigo_promocional)) {
+            $detalleEntradas[] = 'Descuento ' . $codigo_promocional . ' ₡-3,500';
+        }
         $detalleEntradas[] = 'Tarifa de Servicio ₡350';
         
         $detalleEntradasHTML = '';
         foreach ($detalleEntradas as $detalle) {
-            $detalleEntradasHTML .= '<div style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
-                <span>' . explode(' ₡', $detalle)[0] . '</span>
-                <span style="font-weight: bold;">₡' . explode('₡', $detalle)[1] . '</span>
+            $esDescuento = strpos($detalle, '₡-') !== false;
+            $color = $esDescuento ? 'color: #dc2626; font-weight: bold;' : '';
+            $partes = explode(' ₡', $detalle);
+            $detalleEntradasHTML .= '<div style="padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; ' . $color . '">
+                <span>' . $partes[0] . '</span>
+                <span style="font-weight: bold;">₡' . $partes[1] . '</span>
             </div>';
         }
         
@@ -630,7 +636,7 @@ function enviarCorreoConQRAlternativo($nombre, $correo, $tarjeta, $cine, $dia, $
         $mail->Port = 587;
         $mail->CharSet = 'UTF-8';
 
-        $mail->setFrom('mismo mail de arriba', 'Dream Movie');
+        $mail->setFrom('', 'Dream Movie');
         $mail->addAddress($correo, $nombre);
         $mail->Subject = '🎬 Tu entrada para ' . $pelicula . ' - Dream Movie';
         

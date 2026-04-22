@@ -1,0 +1,36 @@
+@startuml
+!define C4P https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master
+!include C4P/C4_Container.puml
+
+LAYOUT_TOP_DOWN()
+
+' Mejor legibilidad al exportar
+skinparam dpi 220
+skinparam defaultFontSize 20
+skinparam wrapWidth 220
+
+title C4 Nivel 2 - Contenedores del Sistema DM (Venta de Cine)
+
+Person(usuario, "Usuario", "Cliente web")
+Person(taquilla, "Taquilla", "Valida ticket")
+
+System_Boundary(vc, "Sistema Web VC") {
+  Container(web, "Web PHP", "PHP + JS", "UI pública + compra (6 pasos)")
+  Container(api, "AJAX API", "PHP", "Películas, salas, horarios, asientos")
+  ContainerDb(db, "BD", "MySQL", "Cines, películas, funciones, entradas, promos")
+  Container(ticket, "Ticketing", "PHPMailer + QR", "Registro, QR y correo")
+}
+
+System_Ext(smtp, "SMTP", "Correo externo")
+
+Rel(usuario, web, "Usa el sitio", "HTTPS")
+Rel(taquilla, web, "Verifica ticket", "Web")
+Rel(web, api, "Consulta datos", "AJAX")
+Rel(api, db, "Lee disponibilidad", "SQL")
+Rel(web, db, "Lecturas/escrituras", "SQL")
+Rel(web, ticket, "Confirma compra")
+Rel(ticket, db, "Guarda entradas", "SQL")
+Rel(ticket, smtp, "Envía ticket", "SMTP")
+
+SHOW_LEGEND()
+@enduml
